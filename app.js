@@ -70,6 +70,10 @@ function TodosController($scope) {
         return total;
     }
 
+    $scope.sortBy = function(propertyName) {
+        $scope.propertyName = propertyName;
+    };
+
 }
 
 function TodoEditorController($scope) {

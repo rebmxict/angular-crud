@@ -6,7 +6,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -46,7 +46,7 @@
                     <!--<div class="header_css">-->
                     <div>id</div>
                     <div>name</div>
-                    <div><a>weight</a></div>
+                    <div>weight <a ng:click="sortBy('weight')"><i class="fa fa-sort" aria-hidden="true"></i></a></div>
                     <div>destination</div>
                     <div>creation_date</div>
                     <div>client_id</div>
@@ -85,12 +85,6 @@
                     <div></div>
                     <div></div>
                 </div>
-            </div>
-
-            <div class="stats">
-                <div>All: {{todos.length}}</div>
-                <div>Incomplete: {{(todos | filter:{done: false}).length}}</div>
-                <div>Done: {{(todos | filter:{done: true}).length}}</div>
             </div>
         </div>
     </div>
