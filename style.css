@@ -5,6 +5,7 @@
 
 .tasks {
     margin-right: 10px;
+    text-align: center;
 }
 
 .stats {
@@ -45,33 +46,76 @@ body {
     margin-top: 50px;
 }
 
+#create_form {
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
 #create_form input {
     width: 14%;
+    float: left;
 }
 
 #create_form button {
-    widows: 14%;
+    width: 14%;
+    float: left;
 }
 
-.header_css {
-    background-color: #bf6abf;
+
+/*sadfsdfdfsdfsdfsdfsdfs*/
+
+#table_head {
+    display: table;
+    width: 100%;
+    height: 50px;
+    background-color: #da7ada;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     color: white;
-    border-top-left-radius: 15px!important;
-    border-top-right-radius: 15px!important;
+    font-weight: bold;
 }
 
-#todo_ul {
-    list-style: none;
-}
-
-.table th {
+#table_head div {
+    display: table-cell;
     width: 14%!important;
+    vertical-align: middle;
 }
 
-.table td {
+.table_body {
+    display: table;
+    width: 100%;
+    padding-top: 7px;
+}
+
+.table_body div {
+    display: table-cell;
     width: 14%!important;
+    height: 35px;
 }
 
-.table td input {
-    width: 100%!important;
+.table_body input {
+    height: 35px;
+}
+
+.table_body .check_button button {
+    position: relative;
+    top: 13px;
+    height: 35px;
+}
+
+#table_bottom {
+    display: table;
+    width: 100%;
+    height: 50px;
+    background-color: #da7ada;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+#table_bottom div {
+    display: table-cell;
+    width: 14%!important;
+    vertical-align: middle;
 }

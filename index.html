@@ -6,6 +6,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -38,81 +40,52 @@
             </div>
 
             <div class="tasks" ng:show="(todos | filter:{done: false} ).length > 0">
-                <b>Tasks to do:</b>
 
-                <table class="table">
-                    <thead>
-                        <tr class="header_css">
-                            <th>id</th>
-                            <th>name</th>
-                            <th>weight</th>
-                            <th>destination</th>
-                            <th>creation_date</th>
-                            <th>client_id</th>
-                            <th>settings</th>
-                        </tr>
-                    </thead>
-                    <tbody ng:repeat="todo in todos | filter:{done: false}">
-                        <tr ng:controller="TodoEditorController">
-                            <td ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.id}}</td>
-                            <td ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.name}}</td>
-                            <td ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.weight}}</td>
-                            <td ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.destination}}</td>
-                            <td ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.creation_date}}</td>
-                            <td ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.client_id}}</td>
-                            <td ng:hide="editorEnabled"><button class="form-control" ng:click="todos.splice($index, 1)">Delete</button></td>
+                <!--<table class="table">-->
+                <div id="table_head">
+                    <!--<div class="header_css">-->
+                    <div>id</div>
+                    <div>name</div>
+                    <div><a>weight</a></div>
+                    <div>destination</div>
+                    <div>creation_date</div>
+                    <div>client_id</div>
+                    <div>settings</div>
+                    <!--</tr>-->
+                </div>
+                <div ng:repeat="todo in todos | filter:{done: false}" style="border: 1px solid lightgray;border-top: 0px solid transparent;">
+                    <div ng:controller="TodoEditorController" class="table_body">
+                        <div ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.id}}</div>
+                        <div ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.name}}</div>
+                        <div ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.weight}}</div>
+                        <div ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.destination}}</div>
+                        <div ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.creation_date}}</div>
+                        <div ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.client_id}}</div>
+                        <div ng:hide="editorEnabled"><button class="form-control" ng:click="todos.splice($index, 1)">Delete</button></div>
 
-                            <td ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="id" ng:required ng-model="id" /></td>
-                            <td ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="name" ng:required ng-model="name" /></td>
-                            <td ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="weight" ng:required ng-model="weight" /></td>
-                            <td ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="destination" ng:required ng-model="destination" /></td>
-                            <td ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="creation_date" ng:required ng-model="creation_date" /></td>
-                            <td ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="client_id" ng:required ng-model="client_id" /></td>
+                        <div ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="id" ng:required ng-model="id" /></div>
+                        <div ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="name" ng:required ng-model="name" /></div>
+                        <div ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="weight" ng:required ng-model="weight" /></div>
+                        <div ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="destination" ng:required ng-model="destination" /></div>
+                        <div ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="creation_date" ng:required ng-model="creation_date" /></div>
+                        <div ng:show="editorEnabled"><input class="form-control" type="text" size="30" name="client_id" ng:required ng-model="client_id" /></div>
 
-                            <td ng:show="editorEnabled">
-                                <button class="form-control" ng:click="save()" style="float: left;float: left;width: 50%;">Ok</button>
-                                <button class="form-control" ng:click="disableEditor()" style="float: left;float: left;width: 50%;">Cancel</button>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                    <!--<ul id="todo_ul">
-                        <li>
-                            <div ng:controller="TodoEditorController">
-                                <button ng:click="todos.splice($index, 1)">Delete</button>
-                                <span ng:hide="editorEnabled" ng:click="enableEditor()">
-                                    {{todo.id}} {{todo.name}} {{todo.weight}} {{todo.destination}} {{todo.creation_date}} {{todo.client_id}}
-                                </span>
-
-                                <span ng:show="editorEnabled">
-                                    <input type="text" size="30" name="id" ng:required ng-model="id" />
-                                    <input type="text" size="30" name="name" ng:required ng-model="name" />
-                                    <input type="text" size="30" name="weight" ng:required ng-model="weight" />
-                                    <input type="text" size="30" name="destination" ng:required ng-model="destination" />
-                                    <input type="text" size="30" name="creation_date" ng:required ng-model="creation_date" />
-                                    <input type="text" size="30" name="client_id" ng:required ng-model="client_id" />
-                                    
-                                    <button ng:click="save()">Ok</button>
-                                    <button ng:click="disableEditor()">Cancel</button>
-                                </span>
-                            </div>
-
-                        </li>
-                    </ul>-->
-                </table>
-
-                Total estimation: {{ sum(todos, false)}}
+                        <div ng:show="editorEnabled" class="check_button">
+                            <button class="form-control" ng:click="save()" style="float: left;float: left;width: 50%;">Ok</button>
+                            <button class="form-control" ng:click="disableEditor()" style="float: left;float: left;width: 50%;">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="table_bottom">
+                    <div>Total</div>
+                    <div></div>
+                    <div>{{ sum(todos, false)}}</div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
-
-            <!--<div class="tasks" ng:show="(todos | filter:{done: true} ).length > 0">
-                <b>Done tasks:</b>
-                <ul ng:repeat="todo in todos | filter:{done: true}">
-                    <li>
-                        <button ng:click="todos.splice($index, 1)">Delete</button>
-                        <button ng:click="todo.done = false">Not done</button>
-                    </li>
-                </ul>
-            </div>-->
 
             <div class="stats">
                 <div>All: {{todos.length}}</div>
