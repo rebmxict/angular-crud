@@ -1,8 +1,8 @@
 function TodosController($scope) {
 
     $scope.todos = [{
-            id: "Learn angular",
-            name: "sample name",
+            id: "aLearn angular",
+            name: "dsample name",
             weight: 1,
             destination: "sample destination",
             creation_date: "sample date",
@@ -10,17 +10,17 @@ function TodosController($scope) {
             done: false
         },
         {
-            id: "Learn angular",
-            name: "sample name",
-            weight: 2,
+            id: "cLearn angular",
+            name: "gsample name",
+            weight: 12,
             destination: "sample destination",
             creation_date: "sample date",
             client_id: "sample client id",
             done: false
         },
         {
-            id: "Learn angular",
-            name: "sample name",
+            id: "bLearn angular",
+            name: "jsample name",
             weight: 3,
             destination: "sample destination",
             creation_date: "sample date",
@@ -70,8 +70,20 @@ function TodosController($scope) {
         return total;
     }
 
-    $scope.sortBy = function(propertyName) {
-        $scope.propertyName = propertyName;
+    $scope.sort = {
+        column: 'weight',
+        descending: false
+    };
+
+    $scope.changeSorting = function(column) {
+        console.log(column);
+        var sort = $scope.sort;
+        if (sort.column == column) {
+            sort.descending = !sort.descending;
+        } else {
+            sort.column = column;
+            sort.descending = false;
+        }
     };
 
 }
@@ -123,4 +135,19 @@ function TodoEditorController($scope) {
 
             $scope.disableEditor();
         }
+
+    $scope.sort = {
+        column: 'weight',
+        descending: false
+    };
+
+    $scope.changeSorting = function(column) {
+        var sort = $scope.sort;
+        if (sort.column == column) {
+            sort.descending = !sort.descending;
+        } else {
+            sort.column = column;
+            sort.descending = false;
+        }
+    };
 }

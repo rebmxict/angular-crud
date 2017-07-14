@@ -41,19 +41,16 @@
 
             <div class="tasks" ng:show="(todos | filter:{done: false} ).length > 0">
 
-                <!--<table class="table">-->
                 <div id="table_head">
-                    <!--<div class="header_css">-->
-                    <div>id</div>
-                    <div>name</div>
-                    <div>weight <a ng:click="sortBy('weight')"><i class="fa fa-sort" aria-hidden="true"></i></a></div>
-                    <div>destination</div>
-                    <div>creation_date</div>
-                    <div>client_id</div>
-                    <div>settings</div>
-                    <!--</tr>-->
+                    <div>id <a ng:click="changeSorting('id')"><i class="fa fa-sort" aria-hidden="true"></i></a></div>
+                    <div>name <a ng:click="changeSorting('name')"><i class="fa fa-sort" aria-hidden="true"></i></a></div>
+                    <div>weight <a ng:click="changeSorting('weight')"><i class="fa fa-sort" aria-hidden="true"></i></a></div>
+                    <div>destination <a ng:click="changeSorting('destination')"><i class="fa fa-sort" aria-hidden="true"></i></a></div>
+                    <div>creation_date <a ng:click="changeSorting('creation_date')"><i class="fa fa-sort" aria-hidden="true"></i></a></div>
+                    <div>client_id <a ng:click="changeSorting('client_id')"><i class="fa fa-sort" aria-hidden="true"></i></a></div>
+                    <div>settings <a ng:click="changeSorting('settings')"><i class="fa fa-sort" aria-hidden="true"></i></a></div>
                 </div>
-                <div ng:repeat="todo in todos | filter:{done: false}" style="border: 1px solid lightgray;border-top: 0px solid transparent;">
+                <div ng:repeat="todo in todos | orderBy: sort.column:sort.descending" style="border: 1px solid lightgray;border-top: 0px solid transparent;">
                     <div ng:controller="TodoEditorController" class="table_body">
                         <div ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.id}}</div>
                         <div ng:hide="editorEnabled" ng:click="enableEditor()">{{todo.name}}</div>
