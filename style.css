@@ -4,7 +4,7 @@
 }
 
 .tasks {
-    margin: 10px;
+    margin-right: 10px;
 }
 
 .stats {
@@ -41,6 +41,37 @@ body {
 }
 
 .crud_body {
-    padding-left: 16px;
+    padding-left: 10px;
     margin-top: 50px;
+}
+
+#create_form input {
+    width: 14%;
+}
+
+#create_form button {
+    widows: 14%;
+}
+
+.header_css {
+    background-color: #bf6abf;
+    color: white;
+    border-top-left-radius: 15px!important;
+    border-top-right-radius: 15px!important;
+}
+
+#todo_ul {
+    list-style: none;
+}
+
+.table th {
+    width: 14%!important;
+}
+
+.table td {
+    width: 14%!important;
+}
+
+.table td input {
+    width: 100%!important;
 }

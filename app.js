@@ -1,27 +1,30 @@
 function TodosController($scope) {
-    $scope.estimates = [0, 1, 2, 3, 5, 8];
 
     $scope.todos = [{
             id: "Learn angular",
             name: "sample name",
+            weight: 1,
             destination: "sample destination",
             creation_date: "sample date",
             client_id: "sample client id",
-            estimate: 8,
-            done: true
+            done: false
         },
         {
             id: "Learn angular",
             name: "sample name",
+            weight: 2,
             destination: "sample destination",
             creation_date: "sample date",
             client_id: "sample client id",
-            estimate: 2,
             done: false
         },
         {
-            name: 'Uninstall ruby',
-            estimate: 3,
+            id: "Learn angular",
+            name: "sample name",
+            weight: 3,
+            destination: "sample destination",
+            creation_date: "sample date",
+            client_id: "sample client id",
             done: false
         }
     ];
@@ -31,6 +34,9 @@ function TodosController($scope) {
             return false;
         }
         if ($scope.name === "") {
+            return false;
+        }
+        if ($scope.weight === "") {
             return false;
         }
         if ($scope.destination === "") {
@@ -46,21 +52,20 @@ function TodosController($scope) {
         $scope.todos.push({
             id: $scope.id,
             name: $scope.name,
+            weight: $scope.weight,
             destination: $scope.destination,
             creation_date: $scope.creation_date,
             client_id: $scope.client_id,
-            estimate: $scope.todoEstimate,
             done: false
         });
 
         $scope.id = '';
-        $scope.todoEstimate = 0;
     }
 
     $scope.sum = function(list, done) {
         var total = 0;
         angular.forEach(list, function(item) {
-            if (item.done == done) total += item.estimate;
+            if (item.done == done) total += item.weight;
         });
         return total;
     }
@@ -75,10 +80,10 @@ function TodoEditorController($scope) {
 
             $scope.id = $scope.todo.id;
             $scope.name = $scope.todo.name;
+            $scope.weight = $scope.todo.weight;
             $scope.destination = $scope.todo.destination;
             $scope.creation_date = $scope.todo.creation_date;
             $scope.client_id = $scope.todo.client_id;
-            $scope.todoEstimate = $scope.todo.estimate;
         },
 
         $scope.disableEditor = function() {
@@ -90,6 +95,9 @@ function TodoEditorController($scope) {
                 return false;
             }
             if ($scope.name === "") {
+                return false;
+            }
+            if ($scope.weight === "") {
                 return false;
             }
             if ($scope.destination === "") {
@@ -104,10 +112,10 @@ function TodoEditorController($scope) {
 
             $scope.todo.id = $scope.id;
             $scope.todo.name = $scope.name;
+            $scope.todo.weight = $scope.weight;
             $scope.todo.destination = $scope.destination;
             $scope.todo.creation_date = $scope.creation_date;
             $scope.todo.client_id = $scope.client_id;
-            $scope.todo.estimate = $scope.todoEstimate;
 
             $scope.disableEditor();
         }
